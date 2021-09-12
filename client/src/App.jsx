@@ -12,6 +12,6 @@ function App() {
       <HomeLayoutHOC path="/:type" exact component={Master} />
     </>
   );
-}
+};
 
 export default App;
