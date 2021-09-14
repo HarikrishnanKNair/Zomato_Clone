@@ -20,10 +20,6 @@ const DeliveryCarousal = () => {
             title: "Pizza",
         },
         {
-            image: "https://b.zmtcdn.com/data/homepage_dish_data/4/51ddb8a2227b36f36b74c4ea3c26823a.png",
-            title: "Paratha",
-        },
-        {
             image: "https://b.zmtcdn.com/data/homepage_dish_data/4/6e69685d22c94ffd42ccd7e70e246bd9.png",
             title: "Burger",
         },
@@ -34,26 +30,6 @@ const DeliveryCarousal = () => {
         {
             image: "https://b.zmtcdn.com/data/homepage_dish_data/4/4de821b132e2c393f7c52bf6e41a4331.png",
             title: "Kebab",
-        },
-        {
-            image: "https://b.zmtcdn.com/data/dish_images/770ba11e5159e6740d68f71f1b838a261612463246.png",
-            title: "Cake",
-        },
-        {
-            image: "https://b.zmtcdn.com/data/homepage_dish_data/4/90cc74d5256f614fc6658cf7942dadd9.png",
-            title: "Noodles",
-        },
-        {
-            image: "https://b.zmtcdn.com/data/homepage_dish_data/4/eb2ef145c0fcad44dbb4ed26aad1527d.png",
-            title: "Rolls",
-        },
-        {
-            image: "https://b.zmtcdn.com/data/homepage_dish_data/2/8628f4b5850aff6831d43f12a5464b44.png",
-            title: "Manchurian",
-        },
-        {
-            image: "https://b.zmtcdn.com/data/dish_images/914402aa1bbe153d735c51a3ba4fe61b1629132873.png",
-            title: "Kesari Bath",
         },
     ];
 
