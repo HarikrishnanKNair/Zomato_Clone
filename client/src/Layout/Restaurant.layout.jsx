@@ -28,7 +28,7 @@ const RestaurantLayout = (props) => {
                     restaurantRating="4.0"
                     deliveryRating="3.5"
                     cuisine="Fast Food, North Indian, Street Food, Beverages, Chinese"
-                    address="Koramangala 5th Block, Bangalore"
+                    address="Basavanagudi, Bangalore"
                 />
                 <div className="my-4 flex flex-wrap gap-3">
                     <InfoButtons isActive>
