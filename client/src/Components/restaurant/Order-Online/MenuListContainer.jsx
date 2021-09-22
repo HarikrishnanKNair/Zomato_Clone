@@ -21,54 +21,6 @@ const MenuListContainer = (props) => {
                     onClickHandler={onClickHandler}
                     isActive={selected === "Recommended"}
                 />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
-                <MenuCategory
-                    name="Recommended"
-                    items={["",""]}
-                    onClickHandler={onClickHandler}
-                    isActive={selected === "Recommended"}
-                />
             </div>
         </>
     );
