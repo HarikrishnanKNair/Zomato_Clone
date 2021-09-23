@@ -5,7 +5,6 @@ import { BiTimeFive } from "react-icons/bi";
 //components
 import FloatMenuBtn from "../../Components/restaurant/Order-Online/FloatMenuBtn";
 import MenuListContainer from "../../Components/restaurant/Order-Online/MenuListContainer";
-import FoodItem from "../../Components/restaurant/Order-Online/FoodItem";
 import FoodList from "../../Components/restaurant/Order-Online/FoodList";
 
 const OrderOnline = () => {
@@ -26,18 +25,6 @@ const OrderOnline = () => {
                     <section className="flex h-screen overflow-y-scroll flex-col gap-3 md:gap-5">
                         <FoodList 
                             title="Recommended"
-                            items={[
-                                {
-                                    price:"1000",
-                                    rating: 3,
-                                    description:"Dig in this mildly spiced aromatic dish, every long grain of rice is infused with the flavours of mutton, ghee and fried onions. Served with Sala & Raita",
-                                    title:"Hyderabadi Dum Mutton Biryani",
-                                    image:"https://b.zmtcdn.com/data/dish_photos/df2/fdcba915279cc1f7bd53422584b94df2.jpg",
-                                },
-                            ]}
-                        />
-                        <FoodList 
-                            title="Soups"
                             items={[
                                 {
                                     price:"1000",
