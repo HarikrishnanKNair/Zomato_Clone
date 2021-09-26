@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IoMdArrowDropdown, IoMdArrowDropup, IoMdArrowDropright } from "react-icons/io";
+import { IoMdArrowDropup, IoMdArrowDropright } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 
 //components
