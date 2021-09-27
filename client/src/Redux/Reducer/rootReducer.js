@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 
-import restaurantReducer from "./restaurant/restaurant.reducer";
+import restaurant from "./restaurant/restaurant.reducer";
+import image from "./Image/Image.reducer";
 
-const rootReducer = combineReducers({ restaurantReducer });
+const rootReducer = combineReducers({ restaurant, image });
 
 export default rootReducer;
