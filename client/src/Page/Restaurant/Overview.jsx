@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { Link, useParams } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
+import { useSelector, useDispatch } from "react-redux";
 import ReactStars from "react-rating-stars-component";
 
 // components
@@ -11,7 +12,10 @@ import ReviewCard from "../../Components/restaurant/Reviews/reviewCard";
 import { NextArrow, PrevArrow } from "../../Components/CarousalArrow";
 import Mapview from "../../Components/restaurant/Mapview";
 
+import { getImage } from "../../Redux/Reducer/Image/Image.action";
+
 const Overview = () => {
+    const [menuImage, setMenuImages] = useState({ images: [] });
     const { id } = useParams();
 
     const settings = {
@@ -51,6 +55,22 @@ const Overview = () => {
         ],
     };
 
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (reduxState) {
+            dispatch(getImage(reduxState?.menuImage)).then((data) => {
+                const images = [];
+                data.payload.image.images.map(({location}) => images.push(location));
+                setMenuImages(images);
+            });
+        }
+    }, []);
+
     const ratingChanged = (newRating) => {
         console.log(newRating);
     };
@@ -74,10 +94,7 @@ const Overview = () => {
                         <MenuCollection
                             menuTitle="Menu"
                             pages="10"
-                            image={[
-                                "https://b.zmtcdn.com/data/menus/910/19721910/296a175b90f663b970f0fa08b7e270d6.jpg",
-                                "https://b.zmtcdn.com/data/menus/910/19721910/b289d0d119247d538508184fca9f21c4.jpg",
-                            ]}
+                            image={menuImage}
                         />
                     </div>
                     <h4 className="text-lg font-medium">Cuisines</h4>

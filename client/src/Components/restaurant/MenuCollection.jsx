@@ -10,10 +10,10 @@ const MenuCollection = (props) => {
         <>
             {isMenuOpen && (
                 <ImageViewer
-                src={ props.image }
-                currentIndex={ CurrentImg }
-                disableScroll={ false }
-                onClose={ closeViewer }
+                    src={ props.image }
+                    currentIndex={ CurrentImg }
+                    disableScroll={ false }
+                    onClose={ closeViewer }
                 />
             )}
             <div className="w-32 h-32 flex flex-col md:w-48 md:h-48" onClick={openViewer}>
