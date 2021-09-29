@@ -75,6 +75,10 @@ const Overview = () => {
         console.log(newRating);
     };
 
+    const getLatLong = (mapAddress) => {
+        return mapAddress?.split(",").map((item) => parseFloat(item));
+    };
+
     return (
         <>
             <div className="flex flex-col md:flex-row relative">
@@ -99,13 +103,16 @@ const Overview = () => {
                     </div>
                     <h4 className="text-lg font-medium">Cuisines</h4>
                     <div className="flex flex-wrap gap-2">
-                        <span className="border border-gray-500 text-blue-600 px-2 py-1 rounded-full">Street Food</span>
-                        <span className="border border-gray-500 text-blue-600 px-2 py-1 rounded-full">Street Food</span>
-                        <span className="border border-gray-500 text-blue-600 px-2 py-1 rounded-full">Street Food</span>
+                        {reduxState?.cuisine.map((data) => (
+                            <span className="border border-gray-500 text-blue-600 px-2 py-1 rounded-full">
+                                {data}
+                            </span>
+                        ))}
+                        
                     </div>
                     <div className="my-4">
                         <h4 className="text-lg font-medium">Average Cost</h4>
-                        <h6>Rs.100 for one order (approx.)</h6>
+                        <h6>Rs {reduxState?.averageCost} for one order (approx.)</h6>
                         <small className="text-gray-500">Exclusive of applicable taxes and charges, if any</small>
                     </div>
                     <div className="my-4">
@@ -154,10 +161,10 @@ const Overview = () => {
                     </div>
                     <div className="my-4 w-full md:hidden flex flex-col gap-4">
                         <Mapview 
-                            title="Mumbai Xpress"
-                            phno="+919920964838"
-                            mapLocation={[12.988134202889283, 77.59405893120281]}
-                            address="172, Lakshmisha Road, V.V Puram, Basavanagudi, Bangalore"
+                            title={reduxState?.name}
+                            phno={`+91${reduxState?.contactNumber}`}
+                            mapLocation={getLatLong(reduxState?.mapLocation)}
+                            address={reduxState?.address}
                         />
                     </div>
                     <div className="my-4 flex flex-col gap-4">
@@ -171,10 +178,10 @@ const Overview = () => {
                     className="hidden md:flex md:w-4/12 sticky top-2 bg-white p-3 rounded-xl shadow-md flex-col gap-4"
                 >
                     <Mapview 
-                        title="Mumbai Xpress"
-                        phno="+919920964838"
-                        mapLocation={[12.988134202889283, 77.59405893120281]}
-                        address="172, Lakshmisha Road, V.V Puram, Basavanagudi, Bangalore"
+                        title={reduxState?.name}
+                        phno={`+91${reduxState?.contactNumber}`}
+                        mapLocation={getLatLong(reduxState?.mapLocation)}
+                        address={reduxState?.address}
                     />
                 </aside>
             </div>
