@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import dayjs from "dayjs";
+import { getUser } from "../../../Redux/Reducer/User/user.action";
 
-const ReviewCard = () => {
+const ReviewCard = (props) => {
+    const [user, setUser] = useState({});
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getUser(props.user)).then((data) => 
+            //setUser(data.payload.user.user.user)
+            console.log(data)
+        );
+    }, []);
+
     return (
         <>
             <div className="my-4 flex flex-col gap-3">
@@ -16,7 +28,7 @@ const ReviewCard = () => {
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-lg font-semibold">
-                                Harikrishnan K Nair
+                                {user?.fullname}
                             </h3>
                             <small className="text-gray-500">
                                 5 Reviews &#8226; 3 Followers
@@ -33,15 +45,15 @@ const ReviewCard = () => {
                             3 <TiStarFullOutline />
                         </span>
                         <h5 className="font-regular uppercase">
-                            Delivery
+                            {props.isRestaurantReview ? "Dining" : "Delivery"}
                         </h5>
                         <small className="text-gray-500">
-                            3 days ago
+                            {dayjs(props.createdAt).format("DD MM YYYY")}
                         </small>
                     </div>
                     <div className="w-full">
                         <p className="w-full text-gray-600 font-light text-base">
-                            Thank you for early, clean delivery. keep up the good work.
+                            {props.reviewText}
                         </p>
                     </div>
                 </div>

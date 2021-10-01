@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineCompass } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 
@@ -7,7 +8,25 @@ import FloatMenuBtn from "../../Components/restaurant/Order-Online/FloatMenuBtn"
 import MenuListContainer from "../../Components/restaurant/Order-Online/MenuListContainer";
 import FoodList from "../../Components/restaurant/Order-Online/FoodList";
 
+//redux actions
+import { getFoodList } from "../../Redux/Reducer/Food/Food.action";
+
 const OrderOnline = () => {
+    const [menu, setMenu] = useState([]);
+
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        reduxState && 
+            dispatch(getFoodList(reduxState.menu)).then((data) => 
+                setMenu(data.payload.menus.menus)
+            );
+    }, [reduxState]);
+
     return (
         <>
             <div className="w-full h-screen flex">
@@ -23,18 +42,9 @@ const OrderOnline = () => {
                         </h4>
                     </div>
                     <section className="flex h-screen overflow-y-scroll flex-col gap-3 md:gap-5">
-                        <FoodList 
-                            title="Recommended"
-                            items={[
-                                {
-                                    price:"1000",
-                                    rating: 3,
-                                    description:"Dig in this mildly spiced aromatic dish, every long grain of rice is infused with the flavours of mutton, ghee and fried onions. Served with Sala & Raita",
-                                    title:"Hyderabadi Dum Mutton Biryani",
-                                    image:"https://b.zmtcdn.com/data/dish_photos/df2/fdcba915279cc1f7bd53422584b94df2.jpg",
-                                },
-                            ]}
-                        />
+                        {menu.map((item) => (
+                            <FoodList key={item._id} {...item} />
+                        ))}
                     </section>
                 </div>
             </div>

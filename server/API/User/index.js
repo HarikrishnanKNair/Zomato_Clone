@@ -8,6 +8,25 @@ import { UserModel } from "../../database/allModels";
 const Router = express.Router();
 
 /*
+Route   /
+Des     Get user data
+Params  _id
+Body    none
+Access  Public
+Method  Get
+*/
+Router.get("/", passport.authenticate("jwt"), async (req, res) => {
+    try {
+        const { fullname, email, phoneNumber, address } = 
+            req.session.passport.user._doc;
+
+        return res.json({ user: { fullname, email, phoneNumber, address }});
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
+
+/*
 Route   /:_id
 Des     Get user data
 Params  _id
@@ -15,12 +34,12 @@ Body    none
 Access  Public
 Method  Get
 */
-Router.get("/:_id", async (req, res) => {
+Router.get("/:_id", passport.authenticate("jwt"), async (req, res) => {
     try {
-        const { _id } = req.params;
-        const getUser = await UserModel.findById(_id);
+        const user = await UserModel.findById(req.params._id);
+        const { fullname } = user;
 
-        return res.json({ user: getUser });
+        return res.json({ user: { fullname }});
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
