@@ -1,10 +1,11 @@
-import React from "react";
-import { FaUserAlt } from "react-icons/fa";
+import React, { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-
-
+import { useSelector } from "react-redux";
+import gravatar from "gravatar";
 
 const Navbar = () => {
+    const reduxState = useSelector((global) => global.user.user);
+
     return(
         <>
             <nav className="p-4 flex bg-white shadow-md lg:shadow-none items-center ">
@@ -19,10 +20,14 @@ const Navbar = () => {
                             />
                         </div>
                         <div className="flex items-center gap-3">
-                            <span className="border flex items-center gap-2 p-2 border-gray-300 text-zomato-400 rounded-full">
-                                <FaUserAlt />
-                            </span>
-                            Harikrishnan
+                            <div className="border p-2 border-gray-300 text-zomato-400 w-14 h-14 rounded-full">
+                                <img 
+                                    src={gravatar.url(reduxState?.user?.email)}
+                                    alt={reduxState?.user?.email}
+                                    className="w-full h-full rounded-full object-cover"
+                                />
+                            </div>
+                            {reduxState?.user?.fullname}
                         </div>
                     </div>
                 </div>
