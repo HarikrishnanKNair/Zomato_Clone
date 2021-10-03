@@ -56,8 +56,13 @@ Params  none
 Access  Public
 Method  Get
 */
-Router.get("/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", ],
-
+Router.get(
+    "/google",
+    passport.authenticate("google", {
+        scope: [
+            "https://www.googleapis.com/auth/userinfo.profile",
+            "https://www.googleapis.com/auth/userinfo.email",
+        ],
     })
 );
 
@@ -70,7 +75,9 @@ Method  Get
 */
 Router.get("/google/callback", passport.authenticate("google",{failureRedirect: "/" }),
     (req, res) => {
-        return res.json({ token : req.session.passport.user.token });
+        return res.redirect(
+            `http://localhost:3000/google/${req.session.passport.user.token}`
+        );
     }
 );
 
