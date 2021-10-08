@@ -43,4 +43,79 @@ Router.get("/image/:_id", async (req, res) => {
     }
 });
 
+// Route   POST /menu/new
+// Des     add new menu
+// Access  PUBLIC
+Router.post("/new", async (req, res) => {
+    try {
+      const { menuData } = req.body;
+  
+      if (menuData._id) {
+        const updateMenu = await MenuModel.findByIdAndUpdate(
+          menuData._id,
+          {
+            $push: {
+              menus: { $each: menuData.menus },
+            },
+          },
+          { new: true }
+        );
+  
+        return res.json({ menu: updateMenu });
+      }
+  
+      const createNewMenu = await MenuModel.create(menuData);
+  
+      return res.json({ menu: createNewMenu });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+});
+  
+// Route   POST menu/recommendation/new
+// Des     add new recommendation
+// Access  PUBLIC
+Router.post("/recommendation/new", async (req, res) => {
+    try {
+      const { menuData } = req.body;
+  
+      const updateMenu = await MenuModel.findByIdAndUpdate(
+        menuData._id,
+        {
+          $push: {
+            recommended: { $each: menuData.recommended },
+          },
+        },
+        { new: true }
+      );
+  
+      return res.json({ menu: updateMenu });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+});
+  
+// Route   PATCH /menu/update
+// Des     update new menu
+// Access  PUBLIC
+Router.patch("/update", async (req, res) => {
+    try {
+      const { menuData } = req.body;
+      const updateMenu = await MenuModel.findOneAndUpdate(
+        { _id: menuData._id, "menus._id": menuData.menu_id },
+        {
+          $set: {
+            "menus.$.name": menuData.name,
+          },
+          $push: { "menus.$.items": { $each: menuData.items } },
+        },
+        { new: true }
+      );
+  
+      return res.json({ menu: updateMenu });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+});
+
 export default Router;
