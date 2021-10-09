@@ -59,7 +59,7 @@ const Overview = () => {
     };
 
     const reduxState = useSelector(
-        (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+        (globalStore) => globalStore.restaurant?.selectedRestaurant?.restaurant
     );
 
     const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const Overview = () => {
         if (reduxState) {
             dispatch(getImage(reduxState?.menuImage)).then((data) => {
                 const images = [];
-                data.payload.image.images.map(({location}) => images.push(location));
+                data.payload.image?.images?.map(({location}) => images?.push(location));
                 setMenuImages(images);
             });
 

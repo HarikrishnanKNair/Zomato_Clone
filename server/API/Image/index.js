@@ -22,7 +22,7 @@ Params  _id
 Access  Public
 Method  Get
 */
-Router.get("/:id", async (req, res) => {
+Router.get("/:_id", async (req, res) => {
     try {
         const image = await ImageModel.findById(req.params._id);
 
@@ -39,7 +39,7 @@ Params  none
 Access  Public
 Method  Post
 */
-Router.post("/",  upload.single("file", 4), async (req, res) => {
+Router.post("/",  upload.single("file"), async (req, res) => {
     try {
         const file = req.file;
 
