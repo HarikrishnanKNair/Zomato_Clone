@@ -179,8 +179,6 @@ const Overview = () => {
                     </div>
                     <div className="my-4 flex flex-col gap-4">
                         <ReviewCard />
-                        <ReviewCard />
-                        <ReviewCard />
                     </div>
                 </div>
                 <aside 
