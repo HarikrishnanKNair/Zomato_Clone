@@ -69,7 +69,7 @@ export const IncQty = (foodID) => async (dispatch) => {
             cartData.cart = cart;
         }
 
-        cartData.cart = cartData.cart.map(({food}) => 
+        cartData.cart = cartData.cart.map((food) => 
             food._id === foodID ? {...food, quantity : food.quantity + 1, totalPrice: food.price * (food.quantity + 1), } : food
         );
 
@@ -90,7 +90,7 @@ export const DecQty = (foodID) => async (dispatch) => {
             cartData.cart = cart;
         }
 
-        cartData.cart = cartData.cart.map(({food}) => 
+        cartData.cart = cartData.cart.map((food) => 
         food._id === foodID ? {...food, quantity : food.quantity - 1, totalPrice: food.price * (food.quantity - 1), } : food
         );
 

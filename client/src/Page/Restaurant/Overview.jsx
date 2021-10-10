@@ -177,9 +177,6 @@ const Overview = () => {
                             address={reduxState?.address}
                         />
                     </div>
-                    <div className="my-4 flex flex-col gap-4">
-                        <ReviewCard />
-                    </div>
                 </div>
                 <aside 
                     style={{ height: "fit-content" }}
