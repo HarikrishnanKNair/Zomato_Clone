@@ -9,5 +9,5 @@ package-lock.json
 
 planning
 
-/Dockerfile
+Dockerfile
 .dockerignore
