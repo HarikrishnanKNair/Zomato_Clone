@@ -11,3 +11,4 @@ planning
 
 Dockerfile
 .dockerignore
+docker-compose.yml
